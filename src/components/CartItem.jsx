@@ -14,6 +14,8 @@ export default function CartItem({ item }) {
       <img
         src={item.image}
         alt={item.name}
+        loading="lazy"
+        decoding="async"
         className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl object-cover flex-shrink-0 border border-white/5"
       />
       <div className="flex-1 min-w-0 flex flex-col justify-center">

@@ -1,5 +1,5 @@
 /**
- * SEO - Updates document title and meta description when route changes
+ * SEO - Updates document title, meta description, OG, Twitter and canonical when route changes
  * USED BY: App.jsx
  */
 import { useEffect } from 'react'
@@ -17,12 +17,23 @@ const ROUTE_TITLES = {
 
 const ROUTE_DESCRIPTIONS = {
   '/': 'Premium luxury restaurant - Order online, book a table. Fresh ingredients, 30 min delivery.',
-  '/menu': 'Explore our premium menu - Starters, Main Course, Desserts. Order online.',
+  '/menu': 'Explore our premium menu - Starters, Main Course, Desserts, Indian veg. Order online.',
   '/book-table': 'Reserve a table at Luxury Restaurant. Choose date, time slot, and dining preference.',
   '/cart': 'Review your order and proceed to checkout.',
   '/checkout': 'Complete your order with delivery and payment details.',
   '/tracking': 'Track your order status - confirmed, preparing, out for delivery, delivered.',
   '/auth': 'Login or sign up to Luxury Restaurant.',
+}
+
+function setMeta(nameOrProp, value, isProperty = false) {
+  const attr = isProperty ? 'property' : 'name'
+  let el = document.querySelector(`meta[${attr}="${nameOrProp}"]`)
+  if (!el) {
+    el = document.createElement('meta')
+    el.setAttribute(attr, nameOrProp)
+    document.head.appendChild(el)
+  }
+  el.setAttribute('content', value || '')
 }
 
 export default function SEO() {
@@ -33,9 +44,17 @@ export default function SEO() {
 
   useEffect(() => {
     document.title = title
-    const metaDesc = document.querySelector('meta[name="description"]')
-    if (metaDesc) metaDesc.setAttribute('content', description)
-  }, [title, description])
+    setMeta('description', description)
+    setMeta('og:title', title, true)
+    setMeta('og:description', description, true)
+    setMeta('twitter:title', title)
+    setMeta('twitter:description', description)
+    const canonical = document.querySelector('link[rel="canonical"]')
+    if (canonical) {
+      const url = `${window.location.origin}${basePath}`
+      canonical.setAttribute('href', url)
+    }
+  }, [title, description, basePath])
 
   return null
 }

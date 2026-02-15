@@ -35,6 +35,8 @@ export default function ReviewSlider() {
                 <img
                   src={review.image}
                   alt={review.name}
+                  loading="lazy"
+                  decoding="async"
                   className="w-20 h-20 rounded-full object-cover border-2 border-[#C9A227]/50 shadow-lg mb-5"
                 />
                 <h4 className="text-lg font-semibold text-white mb-2">{review.name}</h4>
