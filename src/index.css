@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+/* Custom theme - Dark luxury */
+@theme {
+  --color-bg: #111111;
+  --color-bg-secondary: #1c1c1c;
+  --color-accent: #C9A227;
+  --color-accent-hover: #d4af37;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+  --radius-card: 16px;
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-gold: 0 4px 20px rgba(201, 162, 39, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #111111;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+main {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Desktop: consistent centered content width */
+@media (min-width: 1024px) {
+  .container-center {
+    max-width: 1152px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(28, 28, 28, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Gold button - comfortable padding so text doesn't touch border */
+.btn-gold {
+  background: #C9A227;
+  color: #111111;
+  font-weight: 600;
+  border-radius: 16px;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(201, 162, 39, 0.3);
+  line-height: 1.4;
+}
+.btn-gold:hover {
+  background: #d4af37;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(201, 162, 39, 0.4);
+}
+
+/* Outlined button */
+.btn-outline {
+  border: 2px solid #C9A227;
+  color: #C9A227;
+  background: transparent;
+  border-radius: 16px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  line-height: 1.4;
+}
+.btn-outline:hover {
+  background: rgba(201, 162, 39, 0.15);
+  transform: translateY(-2px);
+}
+
+
+/* Premium animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Utility classes for scroll-triggered animations (used by AnimateOnScroll) */
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out both;
+}
+.animate-scale-in {
+  animation: scaleIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-slide-up {
+  animation: slideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-slide-in-right {
+  animation: slideInRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Stagger delays for grid items */
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.2s; }
+.animate-delay-3 { animation-delay: 0.3s; }
+.animate-delay-4 { animation-delay: 0.4s; }
+.animate-delay-5 { animation-delay: 0.5s; }
+.animate-delay-6 { animation-delay: 0.6s; }
+.animate-delay-7 { animation-delay: 0.7s; }
+.animate-delay-8 { animation-delay: 0.8s; }
+.animate-delay-9 { animation-delay: 0.9s; }
+.animate-delay-10 { animation-delay: 1s; }
+
+/* Initial state for elements that animate in view */
+.animate-on-scroll {
+  opacity: 0;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+}
