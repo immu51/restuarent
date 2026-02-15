@@ -42,24 +42,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* Phone: prevent tiny tap targets and iOS input zoom */
-@media (max-width: 768px) {
-  input, select, textarea, button {
-    font-size: 16px !important;
-  }
-  /* Keep image areas visible on mobile – prevent collapse */
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    min-height: 1px;
-  }
-  [class*="aspect-"] {
-    min-height: 120px;
-  }
 }
 
 main {
