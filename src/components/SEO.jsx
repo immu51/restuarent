@@ -49,11 +49,13 @@ export default function SEO() {
     setMeta('og:description', description, true)
     setMeta('twitter:title', title)
     setMeta('twitter:description', description)
-    const canonical = document.querySelector('link[rel="canonical"]')
-    if (canonical) {
-      const url = `${window.location.origin}${basePath}`
-      canonical.setAttribute('href', url)
+    let canonical = document.querySelector('link[rel="canonical"]')
+    if (!canonical) {
+      canonical = document.createElement('link')
+      canonical.setAttribute('rel', 'canonical')
+      document.head.appendChild(canonical)
     }
+    canonical.setAttribute('href', `${window.location.origin}${basePath}`)
   }, [title, description, basePath])
 
   return null
