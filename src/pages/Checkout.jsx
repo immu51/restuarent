@@ -46,7 +46,7 @@ export default function Checkout() {
   if (cart.length === 0 && !placing) {
     return (
       <>
-        <div className="min-h-screen bg-[#111111] pt-28 md:pt-32 flex items-center justify-center">
+        <div className="min-h-screen bg-[#111111] flex items-center justify-center" style={{ paddingTop: 'calc(var(--navbar-height) + 2rem)' }}>
           <div className="text-center">
             <p className="text-white/80 mb-4">Your cart is empty.</p>
             <Link to="/menu" className="text-[#C9A227] hover:underline">Go to Menu</Link>
@@ -59,7 +59,7 @@ export default function Checkout() {
 
   return (
     <>
-      <div className="min-h-screen bg-[#111111] pt-28 md:pt-32 pb-16">
+      <div className="min-h-screen bg-[#111111] pb-16" style={{ paddingTop: 'calc(var(--navbar-height) + 2rem)' }}>
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-8 animate-[fadeInUp_0.6s_cubic-bezier(0.22,1,0.36,1)_both]" style={{ fontFamily: "'Playfair Display', serif" }}>
             Checkout
@@ -178,7 +178,7 @@ export default function Checkout() {
 
             {/* Order summary */}
             <div className="lg:col-span-1">
-              <div className="sticky top-28 p-6 rounded-2xl bg-[#1c1c1c] shadow-[0_4px_20px_rgba(0,0,0,0.3)]" style={{ borderRadius: '16px' }}>
+              <div className="sticky p-6 rounded-2xl bg-[#1c1c1c] shadow-[0_4px_20px_rgba(0,0,0,0.3)]" style={{ borderRadius: '16px', top: 'calc(var(--navbar-height) + 1rem)' }}>
                 <h3 className="text-lg font-semibold text-white mb-4">Order Summary</h3>
                 <ul className="space-y-2 mb-4 max-h-48 overflow-y-auto">
                   {cart.map((item) => (

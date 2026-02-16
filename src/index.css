@@ -19,9 +19,19 @@
   box-sizing: border-box;
 }
 
+/* Match Navbar height so page content starts below it (no overlay) */
+:root {
+  --navbar-height: 4rem; /* h-16 */
+}
+@media (min-width: 768px) {
+  :root {
+    --navbar-height: 5rem; /* md:h-20 */
+  }
+}
+
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: var(--navbar-height);
 }
 
 @media (prefers-reduced-motion: reduce) {

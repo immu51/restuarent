@@ -3,7 +3,7 @@
  * USED BY: App.jsx (always visible)
  * Uses CartContext for cart count badge
  */
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 
@@ -19,6 +19,11 @@ export default function Navbar() {
   const { cartCount } = useCart()
   const location = useLocation()
   const navigate = useNavigate()
+
+  // Close mobile menu when route changes (e.g. Cart → Checkout) so it doesn’t overlay the new page
+  useEffect(() => {
+    setOpen(false)
+  }, [location.pathname])
 
   const handleHashNav = (to, hash) => {
     setOpen(false)
