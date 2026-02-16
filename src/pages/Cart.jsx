@@ -33,7 +33,7 @@ export default function Cart() {
   if (cartCount === 0) {
     return (
       <>
-        <div className="min-h-screen bg-[#111111] pt-28 md:pt-32 pb-16 flex items-center justify-center">
+        <div className="min-h-screen bg-[#111111] pb-16 flex items-center justify-center" style={{ paddingTop: 'calc(5rem + 2rem)' }}>
           <div className="text-center px-4 animate-[fadeInUp_0.7s_cubic-bezier(0.22,1,0.36,1)_both]">
             <h1 className="text-3xl font-bold text-white mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
               Your cart is empty
@@ -54,7 +54,7 @@ export default function Cart() {
 
   return (
     <>
-      <div className="min-h-screen bg-[#111111] pt-28 md:pt-32 pb-16">
+      <div className="min-h-screen bg-[#111111] pb-16" style={{ paddingTop: 'calc(5rem + 2rem)' }}>
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-8 animate-[fadeInUp_0.6s_cubic-bezier(0.22,1,0.36,1)_both]" style={{ fontFamily: "'Playfair Display', serif" }}>
             Your Cart
