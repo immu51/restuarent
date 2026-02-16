@@ -5,6 +5,7 @@
  */
 import { useState, useMemo } from 'react'
 import FoodCard from '../components/FoodCard'
+import DishDetailModal from '../components/DishDetailModal'
 import Footer from '../components/Footer'
 import AnimateOnScroll from '../components/AnimateOnScroll'
 import { DISHES, DISH_CATEGORIES } from '../data/dishes'
@@ -12,6 +13,13 @@ import { DISHES, DISH_CATEGORIES } from '../data/dishes'
 export default function Menu() {
   const [category, setCategory] = useState('All')
   const [search, setSearch] = useState('')
+  const [detailDish, setDetailDish] = useState(null)
+  const [detailOpen, setDetailOpen] = useState(false)
+
+  const openDetail = (dish) => {
+    setDetailDish(dish)
+    setDetailOpen(true)
+  }
 
   const filtered = useMemo(() => {
     return DISHES.filter((d) => {
@@ -111,7 +119,7 @@ export default function Menu() {
             {filtered.length ? (
               filtered.map((dish, i) => (
                 <AnimateOnScroll key={dish.id} animation="scaleIn" delay={Math.min((i % 8) + 1, 8)}>
-                  <FoodCard item={dish} />
+                  <FoodCard item={dish} onCardClick={openDetail} />
                 </AnimateOnScroll>
               ))
             ) : (
@@ -120,6 +128,7 @@ export default function Menu() {
           </div>
         </div>
       </div>
+      <DishDetailModal open={detailOpen} onClose={() => setDetailOpen(false)} dish={detailDish} />
       <Footer />
     </>
   )

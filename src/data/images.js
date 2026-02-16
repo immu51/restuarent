@@ -1,5 +1,6 @@
 /**
- * IMAGE PATHS - All images are local (public/images), no external URLs
+ * IMAGE PATHS - Sab pictures local/downloaded (public/images), koi external URL nahi
+ * Hero, dishes, avatars – sab public folder mein rakhein
  *
  * USED BY: Hero (HERO_IMAGES), dishes.js (DISH_IMAGES), reviews.js (AVATAR_IMAGES)
  */

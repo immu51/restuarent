@@ -232,5 +232,10 @@ export const DISHES = [
   },
 ]
 
+// Har dish ki 3 pictures – same dish ki hi (sab local: public/images/dishes)
+DISHES.forEach((d) => {
+  d.images = [d.image, d.image, d.image]
+})
+
 // Popular dishes for home (first 6)
 export const POPULAR_DISHES = DISHES.slice(0, 6)

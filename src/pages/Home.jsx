@@ -2,8 +2,10 @@
  * HOME PAGE - Landing: Hero, Popular Dishes, Why Us, Reviews, Contact form
  * ROUTE: /
  */
+import { useState } from 'react'
 import Hero from '../components/Hero'
 import FoodCard from '../components/FoodCard'
+import DishDetailModal from '../components/DishDetailModal'
 import Footer from '../components/Footer'
 import ReviewSlider from '../components/ReviewSlider'
 import ContactForm from '../components/ContactForm'
@@ -34,6 +36,14 @@ const WHY_US = [
 ]
 
 export default function Home() {
+  const [detailDish, setDetailDish] = useState(null)
+  const [detailOpen, setDetailOpen] = useState(false)
+
+  const openDetail = (dish) => {
+    setDetailDish(dish)
+    setDetailOpen(true)
+  }
+
   return (
     <>
       <Hero />
@@ -51,7 +61,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 w-full items-stretch">
             {POPULAR_DISHES.map((dish, i) => (
               <AnimateOnScroll key={dish.id} animation="scaleIn" delay={Math.min(i + 1, 8)}>
-                <FoodCard item={dish} />
+                <FoodCard item={dish} onCardClick={openDetail} />
               </AnimateOnScroll>
             ))}
           </div>
@@ -96,6 +106,7 @@ export default function Home() {
       <AnimateOnScroll animation="fadeInUp">
         <ContactForm />
       </AnimateOnScroll>
+      <DishDetailModal open={detailOpen} onClose={() => setDetailOpen(false)} dish={detailDish} />
       <Footer />
     </>
   )
